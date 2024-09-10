@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <!-- SWIPER -->
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="text"].valid,
+    input[type="email"].valid,
+    input[type="password"].valid,
+    input[type="date"].valid {
+        border-color: #28a745;
+    }
+
+    input[type="text"].invalid,
+    input[type="email"].invalid,
+    input[type="password"].invalid,
+    input[type="date"].invalid {
+        border-color: #dc3545;
+    }
+
+    .error-message {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .valid-icon,
+    .invalid-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        font-size: 18px;
+        display: none;
+    }
+
+    .valid-icon {
+        color: #28a745;
+    }
+
+    .invalid-icon {
+        color: #dc3545;
+    }
+
+    #togglePassword {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    button[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    button[type="submit"]:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+    }
+
+    /* SWIPER CSS */
+    .swiper-container {
+        width: 100%;
+        height: 300px;
+    }
+
+    .swiper-slide {
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        color: #333;
+    }
+
+    /* Font Awesome Icons */
+    .fas {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+    }
+
+
+    </style>
+
+
+    <!-- Font Awesome CDN Link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+ </head>
+
+
+<body>
+    <section class="Register" id="Register"></section>
+    <div class="form-container">
+        <form id="registrationForm">
+            <h2>Sign Up</h2>
+           
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <span class="error-message" id="nameError"></span>
+                <i class="fas fa-check valid-icon" id="nameValidIcon"></i>
+                <i class="fas fa-times invalid-icon" id="nameInvalidIcon"></i>
+            </div>
+
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message" id="emailError"></span>
+                <i class="fas fa-check valid-icon" id="emailValidIcon"></i>
+                <i class="fas fa-times invalid-icon" id="emailInvalidIcon"></i>
+            </div>
+
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <i class="fas fa-eye" id="togglePassword"></i>
+                <span class="error-message" id="passwordError"></span>
+                <i class="fas fa-check valid-icon" id="passwordValidIcon"></i>
+                <i class="fas fa-times invalid-icon" id="passwordInvalidIcon"></i>
+            </div>
+
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <span class="error-message" id="confirmPasswordError"></span>
+                <i class="fas fa-check valid-icon" id="confirmPasswordValidIcon"></i>
+                <i class="fas fa-times invalid-icon" id="confirmPasswordInvalidIcon"></i>
+            </div>
+
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                <span class="error-message" id="dobError"></span>
+                <i class="fas fa-check valid-icon" id="dobValidIcon"></i>
+                <i class="fas fa-times invalid-icon" id="dobInvalidIcon"></i>
+            </div>
+
+
+            <!-- Submit Button -->
+            <button type="submit" id="submitBtn" disabled>Sign Up</button>
+        </form>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById('registrationForm');
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const dob = document.getElementById('dob');
+            const submitBtn = document.getElementById('submitBtn');
+            const togglePassword = document.getElementById('togglePassword');
+
+
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const dobError = document.getElementById('dobError');
+
+
+            const nameValidIcon = document.getElementById('nameValidIcon');
+            const nameInvalidIcon = document.getElementById('nameInvalidIcon');
+            const emailValidIcon = document.getElementById('emailValidIcon');
+            const emailInvalidIcon = document.getElementById('emailInvalidIcon');
+            const passwordValidIcon = document.getElementById('passwordValidIcon');
+            const passwordInvalidIcon = document.getElementById('passwordInvalidIcon');
+            const confirmPasswordValidIcon = document.getElementById('confirmPasswordValidIcon');
+            const confirmPasswordInvalidIcon = document.getElementById('confirmPasswordInvalidIcon');
+            const dobValidIcon = document.getElementById('dobValidIcon');
+            const dobInvalidIcon = document.getElementById('dobInvalidIcon');
+
+
+            fullName.addEventListener('input', validateName);
+            email.addEventListener('input', validateEmail);
+            password.addEventListener('input', validatePassword);
+            confirmPassword.addEventListener('input', validateConfirmPassword);
+            dob.addEventListener('input', validateDOB);
+
+
+            form.addEventListener('input', validateForm);
+
+
+            togglePassword.addEventListener('click', () => {
+                if (password.type === 'password') {
+                    password.type = 'text';
+                    togglePassword.classList.add('fa-eye-slash');
+                    togglePassword.classList.remove('fa-eye');
+                } else {
+                    password.type = 'password';
+                    togglePassword.classList.add('fa-eye');
+                    togglePassword.classList.remove('fa-eye-slash');
+                }
+            });
+
+
+            function validateName() {
+                const nameValue = fullName.value.trim();
+                const namePattern = /^[A-Za-z\s]{3,}$/;
+                if (!namePattern.test(nameValue)) {
+                    nameError.textContent = 'Full name must be at least 3 characters long and contain only alphabetic characters and spaces.';
+                    fullName.classList.add('invalid');
+                    fullName.classList.remove('valid');
+                    nameValidIcon.style.display = 'none';
+                    nameInvalidIcon.style.display = 'inline';
+                } else {
+                    nameError.textContent = '';
+                    fullName.classList.add('valid');
+                    fullName.classList.remove('invalid');
+                    nameValidIcon.style.display = 'inline';
+                    nameInvalidIcon.style.display = 'none';
+                }
+            }
+
+
+            function validateEmail() {
+                const emailValue = email.value.trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailValue)) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    email.classList.add('invalid');
+                    email.classList.remove('valid');
+                    emailValidIcon.style.display = 'none';
+                    emailInvalidIcon.style.display = 'inline';
+                } else {
+                    emailError.textContent = '';
+                    email.classList.add('valid');
+                    email.classList.remove('invalid');
+                    emailValidIcon.style.display = 'inline';
+                    emailInvalidIcon.style.display = 'none';
+                }
+            }
+
+
+            function validatePassword() {
+                const passwordValue = password.value;
+                const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                if (!passwordPattern.test(passwordValue)) {
+                    passwordError.textContent = 'Password must be at least 8 characters long and contain both letters and numbers.';
+                    password.classList.add('invalid');
+                    password.classList.remove('valid');
+                    passwordValidIcon.style.display = 'none';
+                    passwordInvalidIcon.style.display = 'inline';
+                } else {
+                    passwordError.textContent = '';
+                    password.classList.add('valid');
+                    password.classList.remove('invalid');
+                    passwordValidIcon.style.display = 'inline';
+                    passwordInvalidIcon.style.display = 'none';
+                }
+                validateConfirmPassword();
+            }
+
+
+            function validateConfirmPassword() {
+                const confirmPasswordValue = confirmPassword.value;
+                if (confirmPasswordValue !== password.value) {
+                    confirmPasswordError.textContent = 'Passwords do not match.';
+                    confirmPassword.classList.add('invalid');
+                    confirmPassword.classList.remove('valid');
+                    confirmPasswordValidIcon.style.display = 'none';
+                    confirmPasswordInvalidIcon.style.display = 'inline';
+                } else {
+                    confirmPasswordError.textContent = '';
+                    confirmPassword.classList.add('valid');
+                    confirmPassword.classList.remove('invalid');
+                    confirmPasswordValidIcon.style.display = 'inline';
+                    confirmPasswordInvalidIcon.style.display = 'none';
+                }
+            }
+
+
+            function validateDOB() {
+                const dobValue = dob.value;
+                if (!dobValue) {
+                    dobError.textContent = 'Please enter your date of birth.';
+                    dob.classList.add('invalid');
+                    dob.classList.remove('valid');
+                    dobValidIcon.style.display = 'none';
+                    dobInvalidIcon.style.display = 'inline';
+                    return;
+                }
+                const dobDate = new Date(dobValue);
+                const age = calculateAge(dobDate);
+
+
+                if (age < 18) {
+                    dobError.textContent = 'You must be at least 18 years old.';
+                    dob.classList.add('invalid');
+                    dob.classList.remove('valid');
+                    dobValidIcon.style.display = 'none';
+                    dobInvalidIcon.style.display = 'inline';
+                } else {
+                    dobError.textContent = '';
+                    dob.classList.add('valid');
+                    dob.classList.remove('invalid');
+                    dobValidIcon.style.display = 'inline';
+                    dobInvalidIcon.style.display = 'none';
+                }
+            }
+
+
+            function calculateAge(dob) {
+                const diff = Date.now() - dob.getTime();
+                const ageDate = new Date(diff);
+                return Math.abs(ageDate.getUTCFullYear() - 1970);
+            }
+
+
+            function validateForm() {
+                const isValidForm =
+                    fullName.classList.contains('valid') &&
+                    email.classList.contains('valid') &&
+                    password.classList.contains('valid') &&
+                    confirmPassword.classList.contains('valid') &&
+                    dob.classList.contains('valid');
+
+
+                submitBtn.disabled = !isValidForm;
+            }
+
+
+            form.addEventListener('submit', (e) => {
+                if (!submitBtn.disabled) {
+                    e.preventDefault();
+                    alert('Form submitted successfully!');
+                    form.reset();
+                    document.querySelectorAll('.valid-icon').forEach(icon => icon.style.display = 'none');
+                    document.querySelectorAll('.invalid-icon').forEach(icon => icon.style.display = 'none');
+                    submitBtn.disabled = true;
+
+
+                    // Redirect to home page
+                    window.location.href = 'index.html'; // Update with your home page URL
+                } else {
+                    e.preventDefault();
+                    alert('Please fill out the form correctly.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

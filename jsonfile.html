@@ -1,0 +1,182 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <style>
+        /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.course-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.course-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px); /* Adjusts for gap */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.course-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.course-content {
+    padding: 15px;
+}
+
+.course-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.course-instructor {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.course-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.course-rating, .course-price, .course-duration {
+    font-size: 1em;
+}
+
+.course-price {
+    font-weight: bold;
+}
+
+.course-enrolled {
+    color: #888;
+    margin-top: 10px;
+}
+
+.course-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s;
+}
+
+@media (max-width: 768px) {
+    .course-card {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Courses</h1>
+        <div class="course-grid" id="course-container">
+            <!-- Courses will be injected here -->
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const courseContainer = document.getElementById('course-container');
+
+    // Fetch data from courses.json
+    fetch('courses.json')
+        .then(response => response.json())
+        .then(courses => {
+            // Function to create course cards
+            function createCourseCard(course) {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+
+                // Add image from course data
+                const img = document.createElement('img');
+                img.src = course.image;  // Use the image URL from the JSON data
+                img.alt = course.title;  // Alternative text for the image
+                card.appendChild(img);
+
+                // Course content
+                const content = document.createElement('div');
+                content.className = 'course-content';
+
+                const title = document.createElement('h2');
+                title.className = 'course-title';
+                title.textContent = course.title;
+
+                const instructor = document.createElement('p');
+                instructor.className = 'course-instructor';
+                instructor.textContent = 'Instructor: ' + course.instructor;
+
+                const details = document.createElement('div');
+                details.className = 'course-details';
+
+                const rating = document.createElement('p');
+                rating.className = 'course-rating';
+                rating.textContent = 'Rating: ' + course.rating + '★';
+
+                const price = document.createElement('p');
+                price.className = 'course-price';
+                price.textContent = 'Price: ' + course.price;
+
+                const duration = document.createElement('p');
+                duration.className = 'course-duration';
+                duration.textContent = 'Duration: ' + course.duration;
+
+                details.appendChild(rating);
+                details.appendChild(price);
+                details.appendChild(duration);
+
+                const enrolled = document.createElement('p');
+                enrolled.className = 'course-enrolled';
+                enrolled.textContent = 'Enrolled: ' + course.enrolled;
+
+                content.appendChild(title);
+                content.appendChild(instructor);
+                content.appendChild(details);
+                content.appendChild(enrolled);
+
+                card.appendChild(content);
+
+                return card;
+            }
+
+            // Inject course cards into the container
+            courses.forEach(course => {
+                courseContainer.appendChild(createCourseCard(course));
+            });
+        })
+        .catch(error => console.error('Error fetching courses:', error));
+});
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Books</title>
+    <!-- Link to the CSS file -->
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Heading */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Controls styling */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .controls input, .controls select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Books container */
+        #books-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Individual book item */
+        .book-item {
+            background-color: white;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .book-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .book-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .book-info h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .book-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Pagination */
+        #pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        #pagination-container button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #pagination-container button:hover {
+            background-color: #218838;
+        }
+
+        /* Sign-up button */
+        .signup-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .signup-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Courses</h1>
+
+        <!-- Search and Sorting UI -->
+        <div class="controls">
+            <button id="fetchbooks">Fetch courses</button>
+            <input type="text" placeholder="Search by course Name" id="search">
+            <select id="sorting">
+                <option value="title-asc">Title Ascending</option>
+                <option value="title-desc">Title Descending</option>
+                <option value="author-asc">Author Ascending</option>
+                <option value="author-desc">Author Descending</option>
+            </select>
+        </div>
+
+        <!-- Container for books -->
+        <div id="books-container"></div>
+
+        <!-- Pagination -->
+        <div id="pagination-container"></div>
+
+        <!-- Sign-up button -->
+        <a href="signup.html" class="signup-button">Sign Up for Courses</a>
+    </div>
+
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
