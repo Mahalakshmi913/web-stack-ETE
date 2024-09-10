@@ -1,0 +1,63 @@
+[
+    {
+      "courseId": "C101",
+      "title": "Introduction to Web Development",
+      "instructor": "John Doe",
+      "duration": "10 hours",
+      "rating": 4.5,
+      "category": "Web Development",
+      "price": "$50",
+      "enrolled": "2500"
+    },
+    {
+      "courseId": "C102",
+      "title": "Advanced JavaScript",
+      "instructor": "Jane Smith",
+      "duration": "8 hours",
+      "rating": 4.7,
+      "category": "Programming",
+      "price": "$75",
+      "enrolled": "1800"
+    },
+    {
+      "courseId": "C103",
+      "title": "Data Structures and Algorithms",
+      "instructor": "James Lee",
+      "duration": "12 hours",
+      "rating": 4.9,
+      "category": "Computer Science",
+      "price": "$100",
+      "enrolled": "1200"
+    },
+    {
+      "courseId": "C104",
+      "title": "Python for Data Science",
+      "instructor": "Mary Jane",
+      "duration": "15 hours",
+      "rating": 4.8,
+      "category": "Data Science",
+      "price": "$80",
+      "enrolled": "5000"
+    },
+    {
+      "courseId": "C105",
+      "title": "Cloud Computing Basics",
+      "instructor": "Tom Brown",
+      "duration": "9 hours",
+      "rating": 4.6,
+      "category": "Cloud Computing",
+      "price": "$60",
+      "enrolled": "3000"
+    },
+    {
+      "courseId": "C106",
+      "title": "Machine Learning with Python",
+      "instructor": "Sarah White",
+      "duration": "20 hours",
+      "rating": 4.9,
+      "category": "Artificial Intelligence",
+      "price": "$120",
+      "enrolled": "3200"
+    }
+ ]
+ 
